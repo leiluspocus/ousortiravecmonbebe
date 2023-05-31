@@ -1,23 +1,21 @@
 <script setup lang="ts">
+import MapView from './views/MapView.vue'
 import { RouterLink, RouterView } from 'vue-router'
-import HelloWorld from './components/HelloWorld.vue'
 </script>
 
 <template>
   <header>
-    <img alt="Vue logo" class="logo" src="@/assets/logo.svg" width="125" height="125" />
-
     <div class="wrapper">
-      <HelloWorld msg="You did it!" />
-
-      <nav>
-        <RouterLink to="/">Home</RouterLink>
-        <RouterLink to="/about">About</RouterLink>
-      </nav>
+      <MapView></MapView>
     </div>
   </header>
 
   <RouterView />
+
+  <nav>
+    <RouterLink to="/help">Help</RouterLink>
+    <RouterLink to="/about">About</RouterLink>
+  </nav>
 </template>
 
 <style scoped>
