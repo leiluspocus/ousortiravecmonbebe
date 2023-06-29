@@ -20,7 +20,7 @@
     initializeMap() {
       const map = L.map('map').setView([51.505, -0.09], 13);
 
-      const tiles = L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+      L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
         maxZoom: 19,
         attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
       }).addTo(map);
@@ -31,7 +31,6 @@
   // of a component's lifecycle.
   // This function will be called when the component is mounted.
   mounted() {
-    console.log(`The initial count is ${this.count}.`);
     this.initializeMap();
   }
 }
@@ -44,7 +43,6 @@
 
 
 <style scoped>
-
 		#map {
 			height: 600px;
 			width: 600px;

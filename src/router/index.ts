@@ -1,13 +1,13 @@
 import { createRouter, createWebHistory } from 'vue-router'
-import HelpView from '../views/HelpView.vue'
+import ListView from '../views/ListView.vue'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   routes: [
     {
-      path: '/help',
-      name: 'help',
-      component: HelpView
+      path: '/list',
+      name: 'list',
+      component: ListView
     },
     {
       path: '/about',
