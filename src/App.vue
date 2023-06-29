@@ -16,6 +16,7 @@ function toggleDisplay(mode) {
   <header>
     <div class="wrapper">
       <nav>
+        <RouterLink to="/">Où sortir avec mon bébé ? </RouterLink>
         <RouterLink to="/add">Proposer un lieu</RouterLink>
         <RouterLink to="/about">A propos</RouterLink>
       </nav>
@@ -23,6 +24,7 @@ function toggleDisplay(mode) {
   </header>
 
 
+  <RouterView />
   <div>
     <toggle-map-list @toggleDisplay="toggleDisplay" />
     <map-view v-if="showMap" />
