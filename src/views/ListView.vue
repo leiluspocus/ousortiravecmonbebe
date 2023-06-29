@@ -1,6 +1,22 @@
+<script>
+export default {
+  props: {
+    spots: Array
+  },
+  setup(props) {
+    const spots = props.spots.value;
+  }
+}
+</script>
 <template>
   <div class="listview">
     <h1>Liste des lieux</h1>
+    <ul>
+      <li :key="id" v-for="item in spots">
+        <h2>{{ item.name }}</h2>
+        <p><u>Adresse</u>: {{ item.address }}</p>
+      </li>
+    </ul>
   </div>
 </template>
 
