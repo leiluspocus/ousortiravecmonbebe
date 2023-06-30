@@ -1,17 +1,12 @@
 <script setup lang="ts">
+import Navigation from './components/header/Navigation.vue'
 import { RouterLink } from 'vue-router'
 
 </script>
 
 <template>
   <header>
-    <div class="wrapper">
-      <nav>
-        <RouterLink to="/">Où sortir avec mon bébé ? </RouterLink>
-        <RouterLink to="/add">Proposer un lieu</RouterLink>
-        <RouterLink to="/about">A propos</RouterLink>
-      </nav>
-    </div>
+      <Navigation />
   </header>
 
 
