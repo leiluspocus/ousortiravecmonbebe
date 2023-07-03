@@ -1,7 +1,7 @@
 <script lang="ts">
   export default {
   methods: {
-    displayMode(mode) {
+    displayMode(mode: string) {
       this.$emit(`toggleDisplay`, mode)
     },
   },
@@ -9,8 +9,8 @@
 </script>
 <template>
   <div class="toggle">
-    <button @click="this.displayMode('map')">Carte</button>
-    <button @click="this.displayMode('list')">Liste</button>
+    <button @click="displayMode('map')">Carte</button>
+    <button @click="displayMode('list')">Liste</button>
   </div>
 </template>
 
