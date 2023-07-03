@@ -12,8 +12,20 @@
       attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
     }).addTo(map);
 
+    const LeafIcon = L.Icon.extend({
+      options: {
+        iconSize:     [38, 95],
+        shadowSize:   [50, 64],
+        iconAnchor:   [22, 94],
+        shadowAnchor: [4, 62],
+        popupAnchor:  [-3, -76]
+      }
+    });
+
+	  const locationIcon = new LeafIcon({iconUrl: '/location.svg'});
+
     spots.forEach((spot: Spot) => {
-      var marker = new L.Marker([spot.lat, spot.lng]);
+      var marker = new L.Marker([spot.lat, spot.lng], {icon: locationIcon}).bindPopup(`${spot.name} - ${spot.address}`);
       marker.addTo(map);
     });
   };
