@@ -12,8 +12,6 @@ jobs:
       contents: read
       pages: write
       id-token: write
-    needs: jekyll-build
-    environment: github-pages
 
 
     steps:
