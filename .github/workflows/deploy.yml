@@ -24,13 +24,7 @@ jobs:
       - name: Build
         run: npm run build
 
-      - name: Deploy to GitHub Pages
-        env:
-          REPO_NAME: ${{ github.repository }}
-        run: |
-          git config --global user.email "laila.atrmouh@gmail.com"
-          git config --global user.name "leiluspocus"
-          git checkout --orphan gh-pages
-          git --no-pager add --all
-          git --no-pager commit -m "Deploy to GitHub Pages"
-          git --no-pager push origin HEAD:gh-pages --force
+      - name: Deploy 🚀
+        uses: JamesIves/github-pages-deploy-action@v4
+        with:
+          folder: dist # The folder the action should deploy.
