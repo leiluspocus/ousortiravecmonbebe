@@ -25,6 +25,8 @@ jobs:
         run: npm run build
         
       - name: Deploy to GitHub Pages
+        env:
+          REPO_NAME: ${{ github.repository }}
         run: |
           git config --global user.email "laila.atrmouh@gmail.com"
           git config --global user.name "leiluspocus"
