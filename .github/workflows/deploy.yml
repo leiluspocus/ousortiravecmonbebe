@@ -8,7 +8,6 @@ on:
 jobs:
   deploy:
     runs-on: ubuntu-latest
-    url: https://leiluspocus.github.io/ousortiravecmonbebe/
     permissions:
       contents: read
       pages: write
