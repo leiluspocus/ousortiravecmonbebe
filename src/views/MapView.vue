@@ -1,17 +1,21 @@
 <script lang="ts">
   import L from 'leaflet'
   import 'leaflet/dist/leaflet.css'
-  import { onMounted, toRefs } from 'vue'
+  import { onMounted, onUpdated, toRefs } from 'vue'
   import { type Spot } from '../types/Spot'
 
-  const initializeMap = (spots: Array<Spot>) => {
-    const map = L.map('map').setView([48.856613, 2.352222], 12);
+  let map = null
+
+  const initializeMap = () => {
+    map = L.map('map').setView([48.856613, 2.352222], 12);
 
     L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
       maxZoom: 19,
       attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
     }).addTo(map);
+  };
 
+  const initializeMarkers = (spots: Array<Spot>) => {
     const LeafIcon = L.Icon.extend({
       options: {
         iconUrl: '/location.svg',
@@ -25,24 +29,28 @@
 
 	  const locationIcon = new LeafIcon();
 
+    console.log('creating markers ', spots);
     spots.forEach((spot: Spot) => {
+      console.log('iterating on: ', spot)
       var marker = new L.Marker([spot.lat, spot.lng], {icon: locationIcon}).bindPopup(`${spot.name} - ${spot.address}`);
       marker.addTo(map);
     });
-  };
+  }
 
   export default {
   // Properties returned from data() become reactive state
   // and will be exposed on `this`.
   props: {
-    spots: Array
+    spots: Array,
   },
-  setup(props) {
+  setup(props: Object) {
     onMounted(() => {
-      const p: any = toRefs(props)
-      const {value} = p.spots
-      initializeMap(value)
+      initializeMap()
+      initializeMarkers(props.spots)
     });
+    onUpdated(() => {
+      initializeMarkers(props.spots)
+    })
   }
 }
 </script>
