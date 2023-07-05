@@ -1,6 +1,7 @@
 {
   "name": "ousortiravecmonbebe",
   "version": "0.0.0",
+  "homepage": "ousortiravecmonbebe.com",
   "private": true,
   "scripts": {
     "dev": "vite",
