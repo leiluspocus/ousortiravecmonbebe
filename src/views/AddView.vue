@@ -1,14 +1,13 @@
 <script setup>
-import { PhotoIcon, UserCircleIcon } from '@heroicons/vue/24/solid'
 </script>
 <template>
   <form>
     <div class="space-y-12">
-      <h1>Proposer un lieu</h1>
+      <h1 class="leading-1 font-bold">Où sortir avec mon bébé ?</h1>
       <div class="border-b border-gray-900/10 pb-12">
-        <h2 class="text-base font-semibold leading-7 text-gray-900">Informations sur le lieu</h2>
-        <p class="mt-1 text-sm leading-6 text-gray-600">Vous pouvez proposer un nouveau lieu avec plaisir mais libre à nous de l'accepter ou non !</p>
+        <p class="mt-1 text-sm leading-2 text-gray-600">Vous pouvez proposer un nouveau lieu avec plaisir mais libre à nous de l'accepter ou non !</p>
 
+        <h2 class="text-base font-semibold leading-7 text-gray-900 mt-10">Informations sur le lieu</h2>
         <div class="mt-10 grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-6">
           <div class="sm:col-span-3">
             <label for="name" class="block text-sm font-medium leading-6 text-gray-900">Nom</label>
@@ -41,9 +40,6 @@ import { PhotoIcon, UserCircleIcon } from '@heroicons/vue/24/solid'
       </div>
 
       <div class="border-b border-gray-900/10 pb-12">
-        <h2 class="text-base font-semibold leading-7 text-gray-900">Titre 2</h2>
-        <p class="mt-1 text-sm leading-6 text-gray-600">Donnez nous un maximum d'informations nous permettant de savoir si le lieu est accueillant pour nos bébés.</p>
-
         <div class="mt-10 space-y-10">
           <fieldset>
             <legend class="text-sm font-semibold leading-6 text-gray-900">Les plus "Bébé Friendly"</legend>

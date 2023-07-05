@@ -1,7 +1,7 @@
 <script>
 export default {
   props: {
-    spots: Array
+    spots: Array,
   },
   setup(props) {
     const spots = props.spots.value;
