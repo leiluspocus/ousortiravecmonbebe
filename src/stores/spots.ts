@@ -14,10 +14,7 @@ export const useSpotsStore = defineStore('spots', {
   getters: {},
   actions: {
     async fetchStore() {
-      const res = await getSpots()
-      res.forEach((element) => {
-        this.spots.push(element)
-      })
+      this.spots = await getSpots()
     }
   }
 })
