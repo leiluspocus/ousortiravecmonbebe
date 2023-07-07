@@ -57,6 +57,7 @@
 
 
 <template>
+  <h1>{{ spots.length }} endroits à découvrir avec Bébé !</h1>
   <div id="map"></div>
 </template>
 
