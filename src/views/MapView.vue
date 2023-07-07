@@ -1,10 +1,10 @@
 <script lang="ts">
   import L from 'leaflet'
   import 'leaflet/dist/leaflet.css'
-  import { onMounted, onUpdated, toRefs } from 'vue'
+  import { onMounted, onUpdated, toRefs, defineComponent } from 'vue'
   import { type Spot } from '../types/Spot'
 
-  let map = null
+  let map: L.Map;
 
   const initializeMap = () => {
     map = L.map('map').setView([48.856613, 2.352222], 12);
@@ -29,35 +29,37 @@
 
 	  const locationIcon = new LeafIcon();
 
-    console.log('creating markers ', spots);
     spots.forEach((spot: Spot) => {
-      console.log('iterating on: ', spot)
       var marker = new L.Marker([spot.lat, spot.lng], {icon: locationIcon}).bindPopup(`${spot.name} - ${spot.address}`);
       marker.addTo(map);
     });
   }
 
-  export default {
+  export default defineComponent({
   // Properties returned from data() become reactive state
   // and will be exposed on `this`.
   props: {
-    spots: Array,
+    spots: Array<Spot>,
   },
-  setup(props: Object) {
+  setup(props) {
     onMounted(() => {
       initializeMap()
-      initializeMarkers(props.spots)
+      if (props.spots !== undefined) {
+        initializeMarkers(props.spots)
+      }
     });
     onUpdated(() => {
-      initializeMarkers(props.spots)
+      if (props.spots !== undefined) {
+        initializeMarkers(props.spots)
+      }
     })
   }
-}
+})
 </script>
 
 
 <template>
-  <h1>{{ spots.length }} endroits à découvrir avec Bébé !</h1>
+  <h1>{{ spots?.length }} endroits à découvrir avec Bébé !</h1>
   <div id="map"></div>
 </template>
 
