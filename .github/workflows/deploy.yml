@@ -34,6 +34,7 @@ jobs:
 
       - name: Build
         run: |
+          cat .env
           npm run build
           echo 'copying files'
           cp dist/index.html dist/404.html
