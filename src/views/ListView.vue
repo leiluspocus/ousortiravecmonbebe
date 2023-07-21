@@ -9,7 +9,7 @@ export default {
 }
 </script>
 <template>
-  <div class="listview">
+  <div class="listview px-4 pb-4">
     <h1>Liste des lieux</h1>
     <ul>
       <li :key="id" v-for="item in spots">

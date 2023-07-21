@@ -22,7 +22,7 @@ onBeforeMount(() => {
 });
 </script>
 <template>
-  <div>
+  <div class="content">
     <toggle-map-list @toggleDisplay="toggleDisplay" />
     <map-view :spots="spots" v-if="showMap" />
     <list-view :spots="spots" v-if="!showMap" />

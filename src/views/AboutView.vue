@@ -1,5 +1,5 @@
 <template>
-  <div class="about">
+  <div class="about px-4 pb-4">
     <h1>A propos</h1>
     <h2>Credits</h2>
     Baby Icon from <a href="https://www.flaticon.com/free-icons/baby" title="baby icons">Baby icons created by Freepik - Flaticon</a>

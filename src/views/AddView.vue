@@ -1,7 +1,7 @@
 <script setup>
 </script>
 <template>
-  <form>
+  <form class="px-4 pb-4 content">
     <div class="space-y-12">
       <h1 class="leading-1 font-bold">Où sortir avec mon bébé ?</h1>
       <div class="border-b border-gray-900/10 pb-12">
