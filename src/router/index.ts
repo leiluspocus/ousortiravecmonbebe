@@ -9,12 +9,12 @@ const router = createRouter({
       component: () => import('../views/Spots.vue')
     },
     {
-      path: '/add',
+      path: '/proposer-un-lieu',
       name: 'Proposer un lieu',
       component: () => import('../views/AddView.vue')
     },
     {
-      path: '/about',
+      path: '/a-propos',
       name: 'about',
       // route level code-splitting
       // this generates a separate chunk (About.[hash].js) for this route

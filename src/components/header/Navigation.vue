@@ -14,7 +14,7 @@
         </div>
         <div class="absolute inset-y-0 right-0 flex items-center sm:static sm:inset-auto">
           <button type="button" class="rounded-full bg-green-800 hover:text-white focus:outline-none">
-            <a href="/about" class="text-white"><QuestionMarkCircleIcon class="h-6 w-6" aria-hidden="true" /></a>
+            <a href="/a-propos" class="text-white"><QuestionMarkCircleIcon class="h-6 w-6" aria-hidden="true" /></a>
           </button>
         </div>
       </div>
@@ -27,6 +27,6 @@ import { Disclosure, DisclosureButton, DisclosurePanel, Menu, MenuButton, MenuIt
 import { Bars3Icon, QuestionMarkCircleIcon, XMarkIcon } from '@heroicons/vue/24/outline'
 
 const navigation = [
-  { name: 'Proposer un lieu', href: '/add', current: false },
+  { name: 'Proposer un lieu', href: '/proposer-un-lieu', current: false },
 ]
 </script>
