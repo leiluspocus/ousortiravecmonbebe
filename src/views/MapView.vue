@@ -59,16 +59,13 @@
 
 
 <template>
-  <h1>{{ spots?.length }} endroits à découvrir avec Bébé !</h1>
   <div id="map"></div>
 </template>
 
 
 <style scoped>
-		#map {
-			height: 600px;
-			width: 600px;
-			max-width: 100%;
-			max-height: 100%;
-		}
+  #map {
+    width: 100%;
+    height: 100vh;
+  }
 </style>
