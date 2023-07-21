@@ -1,14 +1,11 @@
 <script setup>
 </script>
 <template>
-  <form class="px-4 pb-4 content">
+  <form class="px-4 pb-4 content content-with-text">
     <div class="space-y-12">
-      <h1 class="leading-1 font-bold">Où sortir avec mon bébé ?</h1>
       <div class="border-b border-gray-900/10 pb-12">
-        <p class="mt-1 text-sm leading-2 text-gray-600">Vous pouvez proposer un nouveau lieu avec plaisir mais libre à nous de l'accepter ou non !</p>
-
-        <h2 class="text-base font-semibold leading-7 text-gray-900 mt-10">Informations sur le lieu</h2>
-        <div class="mt-10 grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-6">
+        <h1 class="text-base font-semibold leading-7 text-gray-900 mt-3">Proposer un endroit "bébé-friendly"</h1>
+        <div class="mt-3 grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-6">
           <div class="sm:col-span-3">
             <label for="name" class="block text-sm font-medium leading-6 text-gray-900">Nom</label>
             <div class="mt-2">
@@ -68,7 +65,7 @@
                 </div>
                 <div class="text-sm leading-6">
                   <label for="offers" class="font-medium text-gray-900">Staff bienveillant</label>
-                  <p class="text-gray-500">Est-ce que l'équipe est gentille avec les bébés? Qu'ils braillent ou qu'ils fassent risette ?</p>
+                  <p class="text-gray-500">Qu'ils braillent ou qu'ils fassent risette, est-ce que l'équipe est agréable avec les tous petits ?</p>
                 </div>
               </div>
             </div>

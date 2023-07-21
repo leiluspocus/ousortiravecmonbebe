@@ -11,12 +11,19 @@
 }
 
 a {
+  color: green;
   transition: 0.4s;
 }
 
 .content {
   min-height: 100vh;
 }
+
+.content-with-text {
+  border-top: 1px dashed green;
+}
+
+
 
 @media (min-width: 1024px) {
   body {
