@@ -4,11 +4,14 @@
       <div class="relative flex h-12 items-center justify-between">
         <div class="flex flex-1 sm:justify-start">
           <div class="flex items-center">
-            <a href="/"><img class="block h-8 w-auto lg:block" src="/logo.png" alt="Où sortir avec mon bébé ?" /></a>
+            <a href="/">
+              <img class="block dark:hidden h-8 w-auto lg:block" src="/logo.png" alt="Où sortir avec mon bébé ?" />
+              <img class="hidden dark:block h-8 w-auto lg:block" src="/logo-for-dark-mode.png" alt="Où sortir avec mon bébé ?" />
+            </a>
           </div>
           <div class="px-4">
             <div class="flex space-x-4">
-              <a v-for="item in navigation" :key="item.name" :href="item.href" :class="[item.current ? 'bg-green-900 text-white' : 'text-green-900 hover:bg-green-700 hover:text-white', 'rounded-md px-3 py-2 text-sm font-medium']" :aria-current="item.current ? 'page' : undefined">{{ item.name }}</a>
+              <a v-for="item in navigation" :key="item.name" :href="item.href" :class="[item.current ? 'bg-green-900 text-white' : 'text-green-900 dark:text-white hover:bg-green-700 hover:text-white', 'rounded-md px-3 py-2 text-sm font-medium']" :aria-current="item.current ? 'page' : undefined">{{ item.name }}</a>
             </div>
           </div>
         </div>
