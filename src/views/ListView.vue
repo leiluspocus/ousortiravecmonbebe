@@ -16,7 +16,7 @@ export default {
           <h2 class="font-bold">{{ item.name }}</h2>
           <p>{{ item.address }}</p>
           <p>{{ item.postal_code}} {{ item.city }}</p>
-          <a href="#">Y aller ?</a>
+          <a :href='`https://maps.google.com/?q=${item.name}, ${item.address}, ${item.postal_code} ${item.city}`' target="_blank" rel="noopener">Y aller ?</a>
         </div>
       </li>
     </ul>

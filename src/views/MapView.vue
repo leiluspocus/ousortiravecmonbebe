@@ -30,7 +30,8 @@
 	  const locationIcon = new LeafIcon();
 
     spots.forEach((spot: Spot) => {
-      var marker = new L.Marker([spot.lat, spot.lng], {icon: locationIcon}).bindPopup(`${spot.name} - ${spot.address}`);
+      var marker = new L.Marker([spot.lat, spot.lng], {icon: locationIcon})
+      .bindPopup(`<strong>${spot.name}</strong> <br /> ${spot.address} <br /> <a href="https://maps.google.com/?q=${spot.name}, ${spot.address}, ${spot.postal_code} ${spot.city}" target="_blank" rel="noopener">Y aller ?</a>`);
       marker.addTo(map);
     });
   }
