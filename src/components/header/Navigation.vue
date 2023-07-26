@@ -5,8 +5,8 @@
         <div class="flex flex-1 sm:justify-start">
           <div class="flex items-center">
             <a href="/">
-              <img class="block dark:hidden h-8 w-auto lg:block" src="/logo.png" alt="Où sortir avec mon bébé ?" />
-              <img class="hidden dark:block h-8 w-auto lg:block" src="/logo-for-dark-mode.png" alt="Où sortir avec mon bébé ?" />
+              <img class="block dark:hidden h-8 w-auto" src="/logo.png" alt="Où sortir avec mon bébé ?" />
+              <img class="hidden dark:block h-8 w-auto" src="/logo-for-dark-mode.png" alt="Où sortir avec mon bébé ?" />
             </a>
           </div>
           <div class="px-4">
