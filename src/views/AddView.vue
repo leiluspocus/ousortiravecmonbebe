@@ -1,6 +1,7 @@
 <script setup>
-import { GeocoderAutocomplete } from '@geoapify/geocoder-autocomplete';
-import { ref, onMounted } from 'vue';
+import { GeocoderAutocomplete } from '@geoapify/geocoder-autocomplete'
+import { ref, onMounted } from 'vue'
+import { insertSpot } from '../api/spots'
 
 let newProposal = ref({})
 let suggestions = ref([])
@@ -10,11 +11,16 @@ const pmrAccess = ref(false)
 const feedback = ref('')
 
 const fetchSuggestions = async (e) => {
-  suggestions.value = [];
-  const response = await fetch(`https://api.geoapify.com/v1/geocode/autocomplete?text=${encodeURIComponent(e.target.value)}&apiKey=${import.meta.env.VITE_AUTOCOMPLETE_KEY}`, {limit: 5})
+  suggestions.value = []
+  const response = await fetch(
+    `https://api.geoapify.com/v1/geocode/autocomplete?text=${encodeURIComponent(
+      e.target.value
+    )}&apiKey=${import.meta.env.VITE_AUTOCOMPLETE_KEY}`,
+    { limit: 5 }
+  )
   const data = await response.json()
   const { features } = data
-  for ( const item of features ) {
+  for (const item of features) {
     suggestions.value.push(item.properties)
   }
 }
@@ -26,23 +32,54 @@ const selectSuggestion = (item) => {
 
 const submitForm = (e) => {
   event.preventDefault()
-  console.log('i will submit form with this infos')
-  console.log(newProposal.value, diaperFacilities, friendlyStaff, pmrAccess, feedback)
+  const { value } = newProposal
+  console.log(value)
+  insertSpot({
+    id: Math.floor(12*value.lat),
+    name: value.name,
+    address: value.address_line2,
+    lat: value.lat,
+    lng: value.lon,
+    postal_code: value.postcode,
+    city: value.city,
+    stroller_access: pmrAccess.value,
+    changing_table: diaperFacilities.value,
+    friendly_staff: friendlyStaff.value
+  })
 }
 </script>
 <template>
   <form class="px-4 pb-4 content content-with-text">
     <div class="space-y-12">
       <div class="border-b border-gray-900/10 pb-12">
-        <h1 class="text-base font-semibold leading-7 text-gray-900 mt-3 dark:text-white">Proposer un endroit "bébé-friendly"</h1>
+        <h1 class="text-base font-semibold leading-7 text-gray-900 mt-3 dark:text-white">
+          Proposer un endroit "bébé-friendly"
+        </h1>
         <div class="mt-3 grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-6">
           <div class="col-span-full">
-            <label for="street-address" class="block text-sm font-medium leading-6 text-gray-900 dark:text-gray-400">Nom et adresse du lieu que vous recommandez ?</label>
+            <label
+              for="street-address"
+              class="block text-sm font-medium leading-6 text-gray-900 dark:text-gray-400"
+              >Nom et adresse du lieu que vous recommandez ?</label
+            >
             <div class="mt-2">
-              <input type="text" name="street-address" id="autocomplete"
-  placeholder="Tapez le nom et/ou l'adresse ..." v-model="newProposal.formatted" @input="fetchSuggestions" class="autocomplete-container block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-green-600 sm:text-sm sm:leading-6" />
-              <div v-show="suggestions.length > 0" class="autocomplete-items ">
-                <div :key="index" v-for="(item, index) in suggestions" :data-lat="item.lat" :data-lon="item.lon" @click="selectSuggestion(item)">
+              <input
+                type="text"
+                name="street-address"
+                id="autocomplete"
+                placeholder="Tapez le nom et/ou l'adresse ..."
+                v-model="newProposal.formatted"
+                @input="fetchSuggestions"
+                class="autocomplete-container block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-green-600 sm:text-sm sm:leading-6"
+              />
+              <div v-show="suggestions.length > 0" class="autocomplete-items">
+                <div
+                  :key="index"
+                  v-for="(item, index) in suggestions"
+                  :data-lat="item.lat"
+                  :data-lon="item.lon"
+                  @click="selectSuggestion(item)"
+                >
                   {{ item.formatted }}
                 </div>
               </div>
@@ -54,43 +91,80 @@ const submitForm = (e) => {
       <div class="border-b border-gray-900/10 pb-12">
         <div class="mt-10 space-y-10">
           <fieldset>
-            <legend class="text-sm font-semibold leading-6 text-gray-900 dark:text-white">Les plus "Bébé Friendly"</legend>
+            <legend class="text-sm font-semibold leading-6 text-gray-900 dark:text-white">
+              Les plus "Bébé Friendly"
+            </legend>
             <div class="mt-6 space-y-6">
               <div class="relative flex gap-x-3">
                 <div class="flex h-6 items-center">
-                  <input type="checkbox" class="h-4 w-4 rounded border-gray-300 text-green-600 focus:ring-green-600" v-model="diaperFacilities" />
+                  <input
+                    type="checkbox"
+                    class="h-4 w-4 rounded border-gray-300 text-green-600 focus:ring-green-600"
+                    v-model="diaperFacilities"
+                  />
                 </div>
                 <div class="text-sm leading-6">
-                  <label for="comments" class="font-medium text-gray-900 dark:text-gray-400">Table à langer</label>
+                  <label for="comments" class="font-medium text-gray-900 dark:text-gray-400"
+                    >Table à langer</label
+                  >
                   <p class="text-gray-500">Y a-t-il de quoi changer les p'tits bouts ?</p>
                 </div>
               </div>
               <div class="relative flex gap-x-3">
                 <div class="flex h-6 items-center">
-                  <input type="checkbox" class="h-4 w-4 rounded border-gray-300 text-green-600 focus:ring-green-600" v-model="pmrAccess" />
+                  <input
+                    type="checkbox"
+                    class="h-4 w-4 rounded border-gray-300 text-green-600 focus:ring-green-600"
+                    v-model="pmrAccess"
+                  />
                 </div>
                 <div class="text-sm leading-6">
-                  <label for="candidates" class="font-medium text-gray-900 dark:text-gray-400">Accès pousettes</label>
-                  <p class="text-gray-500">Est-ce facile de se déplacer en poussette dans l'établissement ? </p>
+                  <label for="candidates" class="font-medium text-gray-900 dark:text-gray-400"
+                    >Accès pousettes</label
+                  >
+                  <p class="text-gray-500">
+                    Est-ce facile de se déplacer en poussette dans l'établissement ?
+                  </p>
                 </div>
               </div>
               <div class="relative flex gap-x-3">
                 <div class="flex h-6 items-center">
-                  <input type="checkbox" class="h-4 w-4 rounded border-gray-300 text-green-600 focus:ring-green-600" v-model="friendlyStaff" />
+                  <input
+                    type="checkbox"
+                    class="h-4 w-4 rounded border-gray-300 text-green-600 focus:ring-green-600"
+                    v-model="friendlyStaff"
+                  />
                 </div>
                 <div class="text-sm leading-6">
-                  <label for="offers" class="font-medium text-gray-900 dark:text-gray-400">Staff bienveillant</label>
-                  <p class="text-gray-500">Qu'ils braillent ou qu'ils fassent risette, est-ce que l'équipe est agréable avec les tous petits ?</p>
+                  <label for="offers" class="font-medium text-gray-900 dark:text-gray-400"
+                    >Staff bienveillant</label
+                  >
+                  <p class="text-gray-500">
+                    Qu'ils braillent ou qu'ils fassent risette, est-ce que l'équipe est agréable
+                    avec les tous petits ?
+                  </p>
                 </div>
               </div>
             </div>
 
             <div class="mt-8 col-span-full">
-              <label for="feedback" class="block text-sm font-medium leading-6 text-gray-900 dark:text-white">Votre opinion</label>
+              <label
+                for="feedback"
+                class="block text-sm font-medium leading-6 text-gray-900 dark:text-white"
+                >Votre opinion</label
+              >
               <div class="mt-2">
-                <textarea id="feedback" name="feedback" v-model="feedback" rows="3" class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-green-600 sm:text-sm sm:leading-6"></textarea>
+                <textarea
+                  id="feedback"
+                  name="feedback"
+                  v-model="feedback"
+                  rows="3"
+                  class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-green-600 sm:text-sm sm:leading-6"
+                ></textarea>
               </div>
-              <p class="mt-3 text-sm leading-6 text-gray-600">Pourquoi recommandez vous ce lieu en quelques mots.</p>
+              <p class="mt-3 text-sm leading-6 text-gray-600">
+                Pourquoi recommandez vous ce lieu en quelques mots.
+              </p>
             </div>
           </fieldset>
         </div>
@@ -98,7 +172,13 @@ const submitForm = (e) => {
     </div>
 
     <div class="mt-6 flex items-center justify-end gap-x-6">
-      <button type="submit" class="rounded-md bg-green-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-green-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-green-600" @click="submitForm">Envoyer</button>
+      <button
+        type="submit"
+        class="rounded-md bg-green-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-green-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-green-600"
+        @click="submitForm"
+      >
+        Envoyer
+      </button>
     </div>
   </form>
 </template>
@@ -110,7 +190,7 @@ const submitForm = (e) => {
 }
 
 .autocomplete-container {
-    position: relative;
+  position: relative;
 }
 
 .autocomplete-items {

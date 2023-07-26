@@ -1,7 +1,7 @@
 import { ref, computed, reactive } from 'vue'
 import { defineStore } from 'pinia'
 import { type Spot } from '../types/Spot'
-import getSpots from '../api/spots'
+import { getSpots } from '../api/spots'
 
 export type RootState = {
   spots: Spot[]
