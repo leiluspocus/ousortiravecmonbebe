@@ -17,6 +17,7 @@
     "format": "prettier --write src/"
   },
   "dependencies": {
+    "@geoapify/geocoder-autocomplete": "^1.5.1",
     "@headlessui/vue": "^1.7.14",
     "@heroicons/vue": "^2.0.18",
     "@supabase/supabase-js": "^2.26.0",
