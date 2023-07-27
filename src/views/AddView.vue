@@ -9,6 +9,7 @@ const friendlyStaff = ref(false)
 const diaperFacilities = ref(false)
 const pmrAccess = ref(false)
 const feedback = ref('')
+const success = ref(false)
 
 const fetchSuggestions = async (e) => {
   suggestions.value = []
@@ -33,9 +34,7 @@ const selectSuggestion = (item) => {
 const submitForm = (e) => {
   event.preventDefault()
   const { value } = newProposal
-  console.log(value)
-  insertSpot({
-    id: Math.floor(12*value.lat),
+  const result = insertSpot({
     name: value.name,
     address: value.address_line2,
     lat: value.lat,
@@ -46,6 +45,9 @@ const submitForm = (e) => {
     changing_table: diaperFacilities.value,
     friendly_staff: friendlyStaff.value
   })
+  success.value = true
+  setTimeout(() => success.value = false, 5000)
+
 }
 </script>
 <template>
@@ -88,6 +90,12 @@ const submitForm = (e) => {
         </div>
       </div>
 
+      <div class="flex animate-bounce px-2 absolute right-0 -top-20 border-2 border-solid border-black-200 rounded-sm bg-white p-2" v-show="success">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="stroke-emerald-500 mr-2 w-6 h-6">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+        </svg>
+        <p>Merci pour votre suggestion, nous l'avons bien reçu! Elle sera traitée prochainement :)</p>
+      </div>
       <div class="border-b border-gray-900/10 pb-12">
         <div class="mt-10 space-y-10">
           <fieldset>

@@ -7,14 +7,12 @@ async function getSpots(): Promise<Array<Spot>> {
   return data
 }
 
-async function insertSpot(spot: Spot): Promise<Spot> {
-  console.log('spot inserted', spot)
+async function insertSpot(spot: Spot): Promise<Boolean> {
   const { data, error } = await supabase
     .from('spots')
-    .insert([{ ...spot }], { returning: 'minimal' })
+    .insert({ ...spot }, { returning: 'minimal' })
     .select()
-  console.log(data, error)
-  return data
+  return true
 }
 
 export { getSpots, insertSpot }
