@@ -46,6 +46,7 @@ const submitForm = (e) => {
     friendly_staff: friendlyStaff.value
   })
   success.value = true
+  window.scrollTo(0,0);
   setTimeout(() => success.value = false, 5000)
 
 }
