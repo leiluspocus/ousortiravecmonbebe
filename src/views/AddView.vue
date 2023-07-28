@@ -16,7 +16,7 @@ const fetchSuggestions = async (e) => {
   const response = await fetch(
     `https://api.geoapify.com/v1/geocode/autocomplete?text=${encodeURIComponent(
       e.target.value
-    )}&apiKey=${import.meta.env.VITE_AUTOCOMPLETE_KEY}`,
+    )}&type=amenity&filter=countrycode:fr&limit=5&apiKey=${import.meta.env.VITE_AUTOCOMPLETE_KEY}`,
     { limit: 5 }
   )
   const data = await response.json()
