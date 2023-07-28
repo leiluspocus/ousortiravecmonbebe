@@ -10,7 +10,7 @@ async function getSpots(): Promise<Array<Spot>> {
 async function insertSpot(spot: Spot): Promise<Boolean> {
   const { data, error } = await supabase
     .from('spots')
-    .insert({ ...spot }, { returning: 'minimal' })
+    .insert({ ...spot })
     .select()
   return true
 }
