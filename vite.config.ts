@@ -13,7 +13,12 @@ export default defineConfig({
     VitePluginRadar({
       // Google Analytics tag injection
       analytics: {
-        id: 'G-EC8BT3E4FT'
+        id: 'G-EC8BT3E4FT',
+        consentDefaults: {
+          analytics_storage: 'denied',
+          ad_storage: 'denied',
+          wait_for_update: 500
+        }
       }
     })
   ],

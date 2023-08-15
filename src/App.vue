@@ -11,6 +11,9 @@ import { RouterLink } from 'vue-router'
 
 
   <RouterView />
+  <div id="footer" class="p-0.5 pl-1.5">
+    <a href="/about#mentions-legales">Mentions légales</a>
+  </div>
 </template>
 
 <style scoped>
@@ -34,5 +37,4 @@ nav a {
   padding: 0 1rem;
   border-left: 1px solid var(--color-border);
 }
-
 </style>
