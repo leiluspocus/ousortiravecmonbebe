@@ -1,68 +1,55 @@
-# ousortiravecmonbebe
+[![AGPLv3 License](https://img.shields.io/badge/License-AGPL%20v3-yellow.svg)](https://opensource.org/licenses/)
 
-This template should help get you started developing with Vue 3 in Vite.
 
-## Recommended IDE Setup
+# Où sortir avec mon bébé ? 👶🏽
 
-[VSCode](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur) + [TypeScript Vue Plugin (Volar)](https://marketplace.visualstudio.com/items?itemName=Vue.vscode-typescript-vue-plugin).
+_Où sortir avec mon bébé ?_ est une application permettant de repérer les endroits faciles d'accès avec des tous petits: cafés, lieux insolites ...
 
-## Type Support for `.vue` Imports in TS
+Notre objectif est de donner des idées d'activités parent-enfant à réaliser près de chez soi !
 
-TypeScript cannot handle type information for `.vue` imports by default, so we replace the `tsc` CLI with `vue-tsc` for type checking. In editors, we need [TypeScript Vue Plugin (Volar)](https://marketplace.visualstudio.com/items?itemName=Vue.vscode-typescript-vue-plugin) to make the TypeScript language service aware of `.vue` types.
+[Proposez des endroits dès maintenant 🎲](https://ousortiravecmonbebe.com/proposer-un-lieu)
+## Demo
 
-If the standalone TypeScript plugin doesn't feel fast enough to you, Volar has also implemented a [Take Over Mode](https://github.com/johnsoncodehk/volar/discussions/471#discussioncomment-1361669) that is more performant. You can enable it by the following steps:
+[Le site est accessible en live ici](https://www.ousortiravecmonbebe.com)
 
-1. Disable the built-in TypeScript Extension
-    1) Run `Extensions: Show Built-in Extensions` from VSCode's command palette
-    2) Find `TypeScript and JavaScript Language Features`, right click and select `Disable (Workspace)`
-2. Reload the VSCode window by running `Developer: Reload Window` from the command palette.
 
-## Customize configuration
+## Installation
 
-See [Vite Configuration Reference](https://vitejs.dev/config/).
+**Prérequis**: [Node.js](https://nodejs.org/fr/download), [Npm](https://docs.npmjs.com/downloading-and-installing-node-js-and-npm).
 
-## Project Setup
+Pour exécuter le projet en local
 
-```sh
-npm install
-```
-
-### Compile and Hot-Reload for Development
-
-```sh
+```bash
+git clone https://github.com/leiluspocus/ousortiravecmonbebe.git
+cd ousortiravecmonbebe
+npm i
 npm run dev
 ```
 
-### Type-Check, Compile and Minify for Production
+## Feedbacks
 
-```sh
-npm run build
-```
+Tous les retours et suggestions sont fortement appréciées ! Vous pouvez nous envoyer un mail à contact@ousortiravecmonbebe.com
 
-### Run Headed Component Tests with [Cypress Component Testing](https://on.cypress.io/component)
 
-```sh
-npm run test:unit:dev # or `npm run test:unit` for headless testing
-```
+## Contribuer
 
-### Run End-to-End Tests with [Cypress](https://www.cypress.io/)
+Si vous êtes développeur ou développeuse, les issues sont [par ici](https://github.com/leiluspocus/ousortiravecmonbebe/issues).
 
-```sh
-npm run test:e2e:dev
-```
+Vous pouvez également contribuer en déclarant des bugs [via les issues Github](https://github.com/leiluspocus/ousortiravecmonbebe/issues) ou par mail à contact@ousortiravecmonbebe.com
+## Stack
 
-This runs the end-to-end tests against the Vite development server.
-It is much faster than the production build.
+**Client:** Vue 3, Vite, TailwindCSS
 
-But it's still recommended to test the production build with `test:e2e` before deploying (e.g. in CI environments):
+**Server:** Supabase, _(Incoming) Node, Express_
 
-```sh
-npm run build
-npm run test:e2e
-```
+**CI/CD:** Github Actions, Vercel
 
-### Lint with [ESLint](https://eslint.org/)
+## Créatrice
 
-```sh
-npm run lint
-```
+- [@leiluspocus](https://www.github.com/leiluspocus)
+
+
+## License
+
+[GNU AGPLv3](https://choosealicense.com/licenses/agpl-3.0/)
+
