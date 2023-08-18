@@ -12,7 +12,12 @@
     <h2 id="mentions-legales" class="font-bold mb-2 mt-6">Mentions légales</h2>
     <p>Ce site est édité par <a href="https://leiluspocus.netlify.app">Laïla Atrmouh</a>.</p>
     <h3 class="underline underline-offset-4 mt-4 mb-2">Hébergement</h3>
-    <p>Ce site est hébergé par la société Vercel Inc., située 340 S Lemon Ave #4133 Walnut, CA 91789, et joignable au (559) 288-7060.</p>
+    <p>Ce site est hébergé par la société GitHub, Inc. (via  <a href="https://pages.github.com/" target="_blank" rel="noopener">GitHub Pages</a>).</p>
+    <p><i>Adresse</i>:
+    88 Colin P. Kelly Jr. Street
+    San Francisco, CA 94107
+    United States<br />
+    <i>Téléphone</i>: +1 (877) 448-4820.</p>
     <h3 class="underline underline-offset-4 mt-4 mb-2">Cookies</h3>
     Aucun cookie n'est placé sur ce site. Si vous en constatez un, <a href="https://github.com/leiluspocus/ousortiravecmonbebe/issues" target="_blank" rel="noopener">faites signe sur le projet Github !</a>
   </div>
