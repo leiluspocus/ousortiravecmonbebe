@@ -42,7 +42,7 @@ Vous pouvez également contribuer en déclarant des bugs [via les issues Github]
 
 **Server:** Supabase, _(Incoming) Node, Express_
 
-**CI/CD:** Github Actions, Vercel
+**CI/CD:** Github Actions, Github Pages
 
 ## Créatrice
 
