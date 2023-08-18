@@ -32,6 +32,12 @@ jobs:
           envkey_VITE_SUPABASE_HOST: ${{ vars.VITE_SUPABASE_HOST }}
           envkey_VITE_SUPABASE_KEY: ${{ vars.VITE_SUPABASE_KEY }}
 
+      - name: Unit tests
+        run: npm run test:unit
+
+      - name: Cypress tests
+        run: npm run test:e2e
+
       - name: Build
         run: |
           npm run build
