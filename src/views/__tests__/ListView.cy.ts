@@ -58,6 +58,5 @@ describe('ListView', () => {
       }
     })
     cy.get('h2').should('contain', 'Le Bouquet Wagram')
-    cy.get('a').click({ multiple: true })
   })
 })
