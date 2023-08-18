@@ -8,7 +8,9 @@ describe('ListView', () => {
           {
             id: 1,
             name: 'Le Bouquet Wagram',
-            address: '145 Av. De Wagram, 75017 Paris',
+            address: '145 Av. De Wagram',
+            postal_code: 75017,
+            city: 'Paris',
             opinion: 'Une terrasse chauffée, possibilité de rentrer avec une poussette simplement',
             lat: 48.88505,
             lng: 2.303
@@ -16,7 +18,9 @@ describe('ListView', () => {
           {
             id: 2,
             name: 'La Felicita',
-            address: '5 Parvis Alan Turing, 75013 Paris',
+            address: '5 Parvis Alan Turing',
+            postal_code: 75013,
+            city: 'Paris',
             opinion: "Des saveurs, de l'espace en masse!",
             lat: 48.834702,
             lng: 2.37048
