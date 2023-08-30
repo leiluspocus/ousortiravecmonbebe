@@ -31,6 +31,7 @@ jobs:
         with:
           envkey_VITE_SUPABASE_HOST: ${{ vars.VITE_SUPABASE_HOST }}
           envkey_VITE_SUPABASE_KEY: ${{ vars.VITE_SUPABASE_KEY }}
+          envkey_VITE_AUTOCOMPLETE_KEY: ${{ vars.VITE_AUTOCOMPLETE_KEY }}
 
       - name: Unit tests
         run: npm run test:unit
