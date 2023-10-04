@@ -3,7 +3,8 @@
   <head>
     <meta charset="UTF-8">
     <link rel="icon" href="/favicon.ico">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="manifest" href="manifest.json">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <title>Où sortir avec mon bébé ?</title>
   </head>
   <body>
@@ -15,6 +16,11 @@
       } else {
         document.documentElement.classList.remove('dark')
       }
+      window.addEventListener("load", () => {
+        if ("serviceWorker" in navigator) {
+          navigator.serviceWorker.register("service-worker.js");
+        }
+      });
     </script>
   </body>
 </html>
