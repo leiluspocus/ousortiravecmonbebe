@@ -3,6 +3,7 @@
   import 'leaflet/dist/leaflet.css'
   import { onMounted, onUpdated, toRefs, defineComponent } from 'vue'
   import { type Spot } from '../types/Spot'
+  import { getCurrentLocation } from '../components/filter'
 
   let map: L.Map;
 
@@ -54,12 +55,18 @@
         initializeMarkers(props.spots)
       }
     })
+  },
+  methods: {
+    fetchLoc() {
+      getCurrentLocation()
+    }
   }
 })
 </script>
 
 
 <template>
+  <button @click="fetchLoc()">Get current position</button>
   <div id="map"></div>
 </template>
 
