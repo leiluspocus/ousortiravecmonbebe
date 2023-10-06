@@ -11,9 +11,6 @@ import { RouterLink } from 'vue-router'
 
 
   <RouterView />
-  <div id="footer" class="p-0.5 pl-1.5">
-    <a href="/a-propos#mentions-legales">Mentions légales</a>
-  </div>
 </template>
 
 <style scoped>
