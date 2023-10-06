@@ -1,6 +1,6 @@
 <template>
   <Disclosure as="nav" v-slot="{ open }">
-    <div class="sm:px-2">
+    <div class="mx-auto max-w-7xl sm:px-2">
       <div class="relative flex h-12 items-center justify-between">
         <div class="flex flex-1 sm:justify-start">
           <div class="flex items-center">
