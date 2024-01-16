@@ -1,4 +1,5 @@
 <script lang="ts">
+import { MapPinIcon } from '@heroicons/vue/24/outline'
 import L from 'leaflet'
 import 'leaflet/dist/leaflet.css'
 import { onMounted, onUpdated, toRefs, defineComponent, onUnmounted, ref } from 'vue'
@@ -46,6 +47,7 @@ const initializeMarkers = (spots: Array<Spot>) => {
 export default defineComponent({
   // Properties returned from data() become reactive state
   // and will be exposed on `this`.
+  components: { MapPinIcon },
   props: {
     spots: Array<Spot>
   },
@@ -113,24 +115,39 @@ export default defineComponent({
 </script>
 
 <template>
-  <button
-    v-if="!isLoadingGetCurrentPosition"
-    @click="
-      () => {
-        toggleCurrentPosition(true)
-        fetchLoc()
-      }
-    "
-  >
-    Get current position
-  </button>
-  <strong v-if="isLoadingGetCurrentPosition">En chargement ...</strong>
   <div id="map"></div>
+  <div id="localisation">
+    <button
+      v-if="!isLoadingGetCurrentPosition"
+      class="block rounded-full bg-green-800 hover:text-white focus:outline-none"
+      @click="
+        () => {
+          toggleCurrentPosition(true)
+          fetchLoc()
+        }
+      "
+    >
+      <MapPinIcon class="h-8 w-8 text-white block" aria-hidden="true" />
+    </button>
+    <span v-if="isLoadingGetCurrentPosition">En chargement ...</span>
+  </div>
 </template>
 
 <style scoped>
 #map {
   width: 100%;
   height: 100vh;
+}
+
+#localisation {
+  position: absolute;
+  top: 110px;
+  z-index: 1000;
+  left: 13px;
+}
+
+#localisation span {
+  background: #eee;
+  padding: 2px;
 }
 </style>
