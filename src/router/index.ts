@@ -6,12 +6,12 @@ const router = createRouter({
     {
       path: '/',
       name: 'Lieux',
-      component: () => import('../views/Spots.vue')
+      component: () => import('../pages/Spots.vue')
     },
     {
       path: '/proposer-un-lieu',
       name: 'Proposer un lieu',
-      component: () => import('../views/AddView.vue')
+      component: () => import('../pages/AddView.vue')
     },
     {
       path: '/a-propos',
@@ -19,7 +19,7 @@ const router = createRouter({
       // route level code-splitting
       // this generates a separate chunk (About.[hash].js) for this route
       // which is lazy-loaded when the route is visited.
-      component: () => import('../views/AboutView.vue')
+      component: () => import('../pages/AboutView.vue')
     }
   ]
 })

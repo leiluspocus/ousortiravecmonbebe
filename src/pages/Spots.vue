@@ -1,7 +1,7 @@
 <script setup lang="ts">
-import MapView from '../views/MapView.vue'
-import ListView from '../views/ListView.vue'
-import ToggleMapList from '../components/ToggleMapList.vue'
+import MapView from '../pages/MapView.vue'
+import ListView from '../pages/ListView.vue'
+import ToggleMapList from '../organisms/ToggleMapList.vue'
 import { ref, onBeforeMount } from 'vue'
 import { useSpotsStore } from '../stores/spots'
 import { type Spot } from '../types/Spot'
