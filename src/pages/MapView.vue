@@ -3,7 +3,7 @@
   import 'leaflet/dist/leaflet.css'
   import { onMounted, onUpdated, toRefs, defineComponent } from 'vue'
   import { type Spot } from '../types/Spot'
-  import { getCurrentLocation } from '../components/filter'
+  import { getCurrentLocation } from '../organisms/filter'
 
   let map: L.Map;
 

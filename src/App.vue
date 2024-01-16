@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import Navigation from './components/header/Navigation.vue'
+import Navigation from './organisms/header/Navigation.vue'
 import { RouterLink } from 'vue-router'
 
 </script>
