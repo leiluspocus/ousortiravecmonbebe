@@ -4,14 +4,8 @@ import { type Spot } from '../types/Spot'
 import { getSpots } from '../api/spots'
 import { type GeolocationCoordinates } from '../types/GeolocationCoordinates'
 
-export type RootState = {
-  spots: Spot[]
-}
-
-const defaultSpotsArray = reactive([] as Spot[])
-
 export const useSpotsStore = defineStore('spots', {
-  state: () => ({ spots: [], currentLocation: {} } as RootState),
+  state: () => ({ spots: [] as Spot[], currentLocation: {} as GeolocationCoordinates }),
   getters: {},
   actions: {
     async fetchStore() {
