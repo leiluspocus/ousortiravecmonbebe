@@ -11,7 +11,7 @@ let map: L.Map
 
 const store = useSpotsStore()
 
-let unsubscribe = null
+let unsubscribe: Function | null = null
 
 console.warn('tabarnark')
 
@@ -55,7 +55,7 @@ export default defineComponent({
   },
   setup(props) {
     const isLoadingGetCurrentPosition = ref(false)
-    const toggleCurrentPosition = (value) => {
+    const toggleCurrentPosition: Function = (value: boolean) => {
       isLoadingGetCurrentPosition.value = value
     }
     onMounted(() => {
@@ -95,6 +95,7 @@ export default defineComponent({
           // it waits for any returned promised
         }
       )
+      console.log(typeof unsubscribe)
     })
     onUpdated(() => {
       if (props.spots !== undefined) {
