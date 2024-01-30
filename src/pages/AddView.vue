@@ -10,19 +10,26 @@ const diaperFacilities = ref(false)
 const pmrAccess = ref(false)
 const feedback = ref('')
 const success = ref(false)
+const autoloaderInProgress = ref(false)
 
 const fetchSuggestions = async (e) => {
   suggestions.value = []
-  const response = await fetch(
-    `https://api.geoapify.com/v1/geocode/autocomplete?text=${encodeURIComponent(
-      e.target.value
-    )}&type=amenity&filter=countrycode:fr&limit=5&apiKey=${import.meta.env.VITE_AUTOCOMPLETE_KEY}`,
-    { limit: 5 }
-  )
-  const data = await response.json()
-  const { features } = data
-  for (const item of features) {
-    suggestions.value.push(item.properties)
+  if (!autoloaderInProgress.value) {
+    autoloaderInProgress.value = true
+    const response = await fetch(
+      `https://api.geoapify.com/v1/geocode/autocomplete?text=${encodeURIComponent(
+        e.target.value
+      )}&type=amenity&filter=countrycode:fr&limit=5&apiKey=${
+        import.meta.env.VITE_AUTOCOMPLETE_KEY
+      }`,
+      { limit: 5 }
+    )
+    const data = await response.json()
+    const { features } = data
+    for (const item of features) {
+      suggestions.value = [...suggestions.value, item.properties]
+    }
+    autoloaderInProgress.value = false
   }
 }
 
@@ -46,9 +53,8 @@ const submitForm = (e) => {
     friendly_staff: friendlyStaff.value
   })
   success.value = true
-  window.scrollTo(0,0);
-  setTimeout(() => success.value = false, 5000)
-
+  window.scrollTo(0, 0)
+  setTimeout(() => (success.value = false), 5000)
 }
 </script>
 <template>
@@ -70,6 +76,7 @@ const submitForm = (e) => {
                 type="text"
                 name="street-address"
                 id="autocomplete"
+                autocomplete="off"
                 placeholder="Tapez le nom et/ou l'adresse ..."
                 v-model="newProposal.formatted"
                 @input="fetchSuggestions"
@@ -91,11 +98,27 @@ const submitForm = (e) => {
         </div>
       </div>
 
-      <div class="flex animate-bounce px-2 absolute right-0 -top-20 border-2 border-solid border-black-200 rounded-sm bg-white p-2" v-show="success">
-        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="stroke-emerald-500 mr-2 w-6 h-6">
-          <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+      <div
+        class="flex animate-bounce px-2 absolute right-0 -top-20 border-2 border-solid border-black-200 rounded-sm bg-white p-2"
+        v-show="success"
+      >
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke-width="1.5"
+          stroke="currentColor"
+          class="stroke-emerald-500 mr-2 w-6 h-6"
+        >
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
+          />
         </svg>
-        <p>Merci pour votre suggestion, nous l'avons bien reçu! Elle sera traitée prochainement :)</p>
+        <p>
+          Merci pour votre suggestion, nous l'avons bien reçu! Elle sera traitée prochainement :)
+        </p>
       </div>
       <div class="border-b border-gray-900/10 pb-12">
         <div class="mt-10 space-y-10">
