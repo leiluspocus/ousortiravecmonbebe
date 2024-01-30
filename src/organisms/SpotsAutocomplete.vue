@@ -47,6 +47,7 @@ const fetchSuggestions = async (e) => {
       v-for="(item, index) in suggestions"
       :data-lat="item.lat"
       :data-lon="item.lon"
+      class="dark:text-white"
       @click="
         () => {
           suggestions = []
@@ -58,4 +59,31 @@ const fetchSuggestions = async (e) => {
     </div>
   </div>
 </template>
-<style></style>
+<style>
+.autocomplete-container {
+  position: relative;
+}
+
+.autocomplete-items {
+  position: absolute;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  box-shadow: 0px 2px 10px 2px rgba(0, 0, 0, 0.1);
+  border-top: none;
+  background-color: #fff;
+
+  z-index: 99;
+  top: calc(100% + 2px);
+  left: 0;
+  right: 0;
+}
+
+.autocomplete-items div {
+  padding: 10px;
+  cursor: pointer;
+}
+
+.autocomplete-items div:hover {
+  /*when hovering an item:*/
+  background-color: rgba(0, 0, 0, 0.1);
+}
+</style>
