@@ -3,6 +3,7 @@ import { GeocoderAutocomplete } from '@geoapify/geocoder-autocomplete'
 import { ref, onMounted } from 'vue'
 import { insertSpot } from '../api/spots'
 import SpotsAutocomplete from '../organisms/SpotsAutocomplete.vue'
+import SuccessNotification from '../molecules/SuccessNotification.vue'
 
 let newProposal = ref({})
 const friendlyStaff = ref(false)
@@ -57,29 +58,10 @@ const submitForm = async (e) => {
           </div>
         </div>
       </div>
-
-      <div
-        class="flex animate-bounce px-2 absolute right-0 -top-20 border-2 border-solid border-black-200 rounded-sm bg-white p-2"
-        v-show="success"
-      >
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          fill="none"
-          viewBox="0 0 24 24"
-          stroke-width="1.5"
-          stroke="currentColor"
-          class="stroke-emerald-500 mr-2 w-6 h-6"
-        >
-          <path
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
-          />
-        </svg>
-        <p>
-          Merci pour votre suggestion, nous l'avons bien reçu! Elle sera traitée prochainement :)
-        </p>
-      </div>
+      <success-notification
+        :msg="'Merci pour votre suggestion, nous l\'avons bien reçu! Elle sera traitée prochainement :)'"
+        :success="success"
+      />
       <div class="border-b border-gray-900/10 pb-12">
         <div class="mt-10 space-y-10">
           <fieldset>
@@ -176,7 +158,7 @@ const submitForm = async (e) => {
         v-if="isSubmissionLoading"
         disabled
         type="button"
-        class="py-2.5 px-5 me-2 text-sm font-medium text-gray-900 bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-green-700 focus:z-10 focus:ring-2 focus:ring-green-700 focus:text-green-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700 inline-flex items-center"
+        class="rounded-md bg-gray-100 px-3 py-2 text-sm font-semibold text-black shadow-sm focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-green-600 inline-flex items-center"
       >
         <svg
           aria-hidden="true"
