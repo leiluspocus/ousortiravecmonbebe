@@ -47,7 +47,7 @@ const fetchSuggestions = async (e) => {
       v-for="(item, index) in suggestions"
       :data-lat="item.lat"
       :data-lon="item.lon"
-      class="dark:text-white"
+      class="dark:text-black"
       @click="
         () => {
           suggestions = []
