@@ -9,7 +9,7 @@ const props = defineProps({
 
 <template>
   <div
-    class="flex animate-bounce px-2 absolute right-0 bottom-8 border-2 border-solid border-red-200 rounded-sm bg-white p-2 z-10"
+    class="flex animate-bounce px-2 absolute right-0 bottom-8 border-2 border-solid border-red-200 rounded-sm bg-white p-2 z-10 dark:text-black"
     v-show="error"
   >
     <svg
