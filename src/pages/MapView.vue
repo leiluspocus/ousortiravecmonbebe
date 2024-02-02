@@ -13,8 +13,6 @@ const store = useSpotsStore()
 
 let unsubscribe: Function | null = null
 
-console.warn('tabarnark')
-
 const initializeMap = () => {
   map = L.map('map').setView([48.856613, 2.352222], 12)
 
@@ -95,7 +93,6 @@ export default defineComponent({
           // it waits for any returned promised
         }
       )
-      console.log(typeof unsubscribe)
     })
     onUpdated(() => {
       if (props.spots !== undefined) {

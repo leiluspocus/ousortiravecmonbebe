@@ -4,6 +4,7 @@ import { ref, onMounted } from 'vue'
 import { insertSpot } from '../api/spots'
 import SpotsAutocomplete from '../organisms/SpotsAutocomplete.vue'
 import SuccessNotification from '../molecules/SuccessNotification.vue'
+import ErrorNotification from '../molecules/ErrorNotification.vue'
 
 let newProposal = ref({})
 const friendlyStaff = ref(false)
@@ -11,6 +12,7 @@ const diaperFacilities = ref(false)
 const pmrAccess = ref(false)
 const feedback = ref('')
 const success = ref(false)
+const error = ref(false)
 const isSubmissionLoading = ref(false)
 
 const selectSuggestion = (item) => {
@@ -21,7 +23,7 @@ const submitForm = async (e) => {
   event.preventDefault()
   const { value } = newProposal
   isSubmissionLoading.value = true
-  await insertSpot({
+  const res = await insertSpot({
     name: value.name,
     address: value.address_line2,
     lat: value.lat,
@@ -32,9 +34,9 @@ const submitForm = async (e) => {
     changing_table: diaperFacilities.value,
     friendly_staff: friendlyStaff.value
   })
-  success.value = true
+  success.value = res
+  error.value = !res
   isSubmissionLoading.value = false
-  window.scrollTo(0, 0)
   setTimeout(() => (success.value = false), 5000)
 }
 </script>
@@ -58,10 +60,6 @@ const submitForm = async (e) => {
           </div>
         </div>
       </div>
-      <success-notification
-        :msg="'Merci pour votre suggestion, nous l\'avons bien reçu! Elle sera traitée prochainement :)'"
-        :success="success"
-      />
       <div class="border-b border-gray-900/10 pb-12">
         <div class="mt-10 space-y-10">
           <fieldset>
@@ -145,7 +143,7 @@ const submitForm = async (e) => {
       </div>
     </div>
 
-    <div class="mt-3 flex items-center justify-end gap-x-6">
+    <div class="mt-3 flex items-center justify-end gap-x-6 relative">
       <button
         type="submit"
         v-if="!isSubmissionLoading"
@@ -179,6 +177,11 @@ const submitForm = async (e) => {
         </svg>
         Loading...
       </button>
+      <success-notification
+        :msg="'Merci pour votre suggestion, nous l\'avons bien reçu! Elle sera traitée prochainement :)'"
+        :success="success"
+      />
+      <error-notification :msg="'Erreur à la soumission'" :error="error" />
     </div>
   </form>
 </template>

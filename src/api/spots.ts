@@ -8,11 +8,18 @@ async function getSpots(): Promise<Array<Spot>> {
 }
 
 async function insertSpot(spot: Spot): Promise<Boolean> {
-  const { data, error } = await supabase
-    .from('spots')
-    .insert({ ...spot })
-    .select()
-  return true
+  try {
+    const { data, error } = await supabase
+      .from('spots')
+      .insert({ ...spot })
+      .select()
+    if (error) {
+      return false
+    }
+    return true
+  } catch (err) {
+    return false
+  }
 }
 
 export { getSpots, insertSpot }
