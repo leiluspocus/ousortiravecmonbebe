@@ -2,7 +2,7 @@
   "name": "Où sortir avec mon bébé ?",
   "short_name": "OSAMB",
   "description": "Retrouvez les cafés et endroits à proximité où vous pouvez emmener vos enfants !",
-  "start_url": "/",
+  "start_url": "https://www.ousortiravecmonbebe.com",
   "scope": "./",
   "icons": [
     {
@@ -34,6 +34,13 @@
       "src": "osamb-512.png",
       "sizes": "512x512",
       "type": "image/png"
+    }
+  ],
+  "screenshots": [
+    {
+      "src": "screenshot1.jpg",
+      "sizes": "1280x720",
+      "type": "image/jpeg"
     }
   ],
   "theme_color": "#166534",
