@@ -1,3 +1,7 @@
+## ⚠️ [Ce projet n'est plus maintenu, il a migré vers Nuxt](https://github.com/leiluspocus/nuxi) ! Vous pourrez trouver la nouvelle codebase ici: https://github.com/leiluspocus/nuxi ⚠️
+
+___________________________________________________________________________________________________________________
+
 [![AGPLv3 License](https://img.shields.io/badge/License-AGPL%20v3-yellow.svg)](https://opensource.org/licenses/)
 
 
